@@ -219,8 +219,10 @@ def consolidate_links(
     rev["Shared"] = rev['Shared'] + max_shared
     private_df = pd.concat([private_df, rev], ignore_index=True)
 
-    # Adjust private bandwidth for uptime and make private links available to all traffic types
-    private_df["Bandwidth"] *= private_df["Uptime"]
+    # Adjust private bandwidth for f(uptime) and make private links available to all traffic types
+    # f(uptime) is a quadratic function that maps 1 to 1; 0.999 to 0.99; and 0.98 to 0.00.
+    private_df["Bandwidth"] *= (-1578.9474 * pow(private_df["Uptime"], 2) + 3176.3158 * private_df["Uptime"] -
+                                1596.3684).clip(lower = 0, upper = 1)
     private_df["Type"] = 0
 
     # Compact down shared IDs (if gaps in series) for private links
