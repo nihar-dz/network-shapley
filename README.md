@@ -1,6 +1,8 @@
 # network-shapley Guide
 
-A Python script to compute Shapley values for network contributors. Note that this is the repo for prototyping and analysis. The production version of this work will be in Rust: [network-shapley-rs](https://github.com/doublezerofoundation/network-shapley-rs).
+**Note that this is the repo for prototyping and analysis. The production version of this work is in Rust: [network-shapley-rs](https://github.com/doublezerofoundation/network-shapley-rs).**
+
+This repo houses a Python script to compute Shapley values for network contributors. 
 
 ## Overview
 
